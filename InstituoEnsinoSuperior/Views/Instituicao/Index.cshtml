@@ -1,0 +1,59 @@
+﻿<!--define o que a
+view recebe e que será definido como modelo para ela. -->
+@model IEnumerable<InstituoEnsinoSuperior.Models.Instituicao>
+
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    </head>
+    <body>
+        <p>
+            <a asp-action="Create">Criar nova Instituição</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InstituicaoID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Endereco)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody
+                   <!--Para cada item em model, vai usar expressão lambda para retornar os parâmetros-->
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InstituicaoID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Endereco)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new {  id=item.InstituicaoID }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.Nome }) |
+                            @Html.ActionLink("Delete", "Delete", new {  id=item.Endereco  })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </body>
+</html>
