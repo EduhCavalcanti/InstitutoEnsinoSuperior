@@ -90,5 +90,24 @@ namespace InstituoEnsinoSuperior.Controllers
             return RedirectToAction(nameof(Index));
         }
         
+        //Método para mostrar o detalhe da instituição 
+        public ActionResult Details (long id)
+        {
+            return View(instituicoes.Where(i => i.InstituicaoId == id).First());
+        }
+
+        //Método para tela de interação delete da instituição
+        public ActionResult Delete (long id)
+        {
+            return View(instituicoes.Where(i => i.InstituicaoId == id).First());
+        }
+
+        //Método para a deletar a instituição do sistema
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete (Instituicao instituto){
+            instituicoes.Remove(instituicoes.Where(i => i.InstituicaoId == instituto.InstituicaoId).First());
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

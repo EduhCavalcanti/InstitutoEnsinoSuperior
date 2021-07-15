@@ -48,8 +48,8 @@ view recebe e que será definido como modelo para ela. -->
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new {  id=item.InstituicaoId }) |
-                            @Html.ActionLink("Details", "Details", new { id=item.Nome }) |
-                            @Html.ActionLink("Delete", "Delete", new {  id=item.Endereco  })
+                            @Html.ActionLink("Details", "Details", new { id=item.InstituicaoId }) |
+                            @Html.ActionLink("Delete", "Delete", new {  id=item.InstituicaoId })
                         </td>
                     </tr>
                 }
