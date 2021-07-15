@@ -51,7 +51,7 @@ namespace InstituoEnsinoSuperior.Controllers
             return View(instituicoes.OrderBy(i => i.Nome));
         }
 
-        //Para pagina de criação(interação) de uma nova instituição
+        //Para pagina de criação(interação) de uma nova instituição, interação com usuário
         public ActionResult Create()
         {
             return View();
