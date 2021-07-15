@@ -21,7 +21,7 @@ view recebe e que será definido como modelo para ela. -->
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.InstituicaoID)
+                        @Html.DisplayNameFor(model => model.InstituicaoId)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Nome)
@@ -38,7 +38,7 @@ view recebe e que será definido como modelo para ela. -->
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.InstituicaoID)
+                            @Html.DisplayFor(modelItem => item.InstituicaoId)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
@@ -47,7 +47,7 @@ view recebe e que será definido como modelo para ela. -->
                             @Html.DisplayFor(modelItem => item.Endereco)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new {  id=item.InstituicaoID }) |
+                            @Html.ActionLink("Edit", "Edit", new {  id=item.InstituicaoId }) |
                             @Html.ActionLink("Details", "Details", new { id=item.Nome }) |
                             @Html.ActionLink("Delete", "Delete", new {  id=item.Endereco  })
                         </td>

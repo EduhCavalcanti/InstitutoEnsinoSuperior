@@ -12,32 +12,32 @@ namespace InstituoEnsinoSuperior.Controllers
         private static IList<Instituicao> instituicoes = new List<Instituicao>() {
             new Instituicao()
             {
-                InstituicaoID = 1,
+                InstituicaoId = 1,
                 Nome = "FBV",
                 Endereco = "Boa viagem"
             },
             new Instituicao()
             {
-                InstituicaoID = 2,
+                InstituicaoId = 2,
                 Nome = "UniSanta",
                 Endereco = "Santa Catarina"
             },
             new Instituicao()
             {
-                InstituicaoID = 3,
+                InstituicaoId = 3,
                 Nome = "UniSãoPaulo",
                 Endereco = "São Paulo"
             },
             new Instituicao() 
             {
 
-                InstituicaoID = 4,
+                InstituicaoId = 4,
                 Nome = "UniSulgrandense",
                 Endereco = "Rio Grande do Sul"
             },
             new Instituicao() 
             {
-                InstituicaoID = 5,
+                InstituicaoId = 5,
                 Nome = "UniCarioca",
                 Endereco = "Rio de Janeiro"
             }
@@ -47,7 +47,8 @@ namespace InstituoEnsinoSuperior.Controllers
         //Vai listar as instituições 
         public IActionResult Index()
         {
-            return View(instituicoes);
+            //Vai retornar as instituições por ordem alfabetica
+            return View(instituicoes.OrderBy(i => i.Nome));
         }
 
         //Para pagina de criação(interação) de uma nova instituição
@@ -64,25 +65,30 @@ namespace InstituoEnsinoSuperior.Controllers
             //Vai adicionar a instituição 
             instituicoes.Add(instituicao);
             //Provisório, vai inserir manual o Id da instituição
-            instituicao.InstituicaoID = instituicoes.Select(i => i.InstituicaoID).Max() + 1;
+            instituicao.InstituicaoId = instituicoes.Select(i => i.InstituicaoId).Max() + 1;
             //Vai redirecionar para página Index
             return RedirectToAction(nameof(Index));
         }
 
-        //Método para interação da tela de edição da instituição (vai mostrar a instituição pelo Id)
+        //Método para interação da tela de edição da instituição com o usuário(vai mostrar a instituição pelo Id)
         public ActionResult Edit(long id)
         {
             //Vai receber o id passado pela view para pegar a instituição e retornar na view
-            return View(instituicoes.Where(i => i.InstituicaoID == id).First());
+            return View(instituicoes.Where(i => i.InstituicaoId == id).First());
         }
 
-        //Método que vai fazer a alteração 
-        //[HttpGet]
-        /*public ActionResult Edit(Instituicao instituicao)
+        //Método que vai fazer a alteração dos dados
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Instituicao instituicao)
         {
-            //var instituto = instituicoes.Where(i => i.InstituicaoID == instituicao.id);
+            //Vai buscar a instituição pela Id que foi passado no parametro instituicao.InstituicaoId
+            instituicoes.Remove(instituicoes.Where(i => i.InstituicaoId == instituicao.InstituicaoId).First());
+            //Vai adicionar a instituição editada
+            instituicoes.Add(instituicao);
+            //Vai redirecionar a página 
             return RedirectToAction(nameof(Index));
         }
-        */
+        
     }
 }
