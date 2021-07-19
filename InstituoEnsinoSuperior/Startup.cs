@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InstituoEnsinoSuperior.Data;
 
 namespace InstituoEnsinoSuperior
 {
@@ -35,14 +37,22 @@ namespace InstituoEnsinoSuperior
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //Conexão com banco de dados, configuração com aquivo => data/IESContext.cs
+            services.AddDbContext<IESContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("IESContext"), builder =>
+                    builder.MigrationsAssembly("InstitutoEnsinoSuperior")));
+
+            services.AddScoped<IESDbInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IESDbInitializer iesInitialize)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                iesInitialize.Initialize();
             }
             else
             {

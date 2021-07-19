@@ -69,7 +69,7 @@ using InstituoEnsinoSuperior.Models;
             WriteLiteral("\r\n    <!DOCTYPE html>\r\n\r\n    <html>\r\n    ");
             EndContext();
             BeginContext(224, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0d07a93ed7a64884a78c788ba971f87f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "54c54d06d0a6436c866d71d9b6189e60", async() => {
                 BeginContext(230, 99, true);
                 WriteLiteral("\r\n        <meta name=\"viewport\" content=\"width=device-width\" />\r\n        <title>Index</title>\r\n    ");
                 EndContext();
@@ -89,12 +89,12 @@ using InstituoEnsinoSuperior.Models;
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(342, 1697, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1cdb6dec523741cf83de43453b07b8e4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f308d133df4841448b918f5e3bbb1906", async() => {
                 BeginContext(348, 27, true);
                 WriteLiteral("\r\n        <p>\r\n            ");
                 EndContext();
                 BeginContext(375, 49, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd39d58502334ab79eb1599e7c3985dd", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ff238c104fa14c9dadf83630ce7a9af5", async() => {
                     BeginContext(398, 22, true);
                     WriteLiteral("Criar nova Instituição");
                     EndContext();
