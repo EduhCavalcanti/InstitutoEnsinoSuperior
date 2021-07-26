@@ -39,3 +39,7 @@ C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\De
 C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Instituicao\Details.cshtml.g.cs
 C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Instituicao\Delete.cshtml.g.cs
 C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Departamento\Index.cshtml.g.cs
+C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Departamento\Create.cshtml.g.cs
+C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Departamento\Edit.cshtml.g.cs
+C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Departamento\Details.cshtml.g.cs
+C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Departamento\Delete.cshtml.g.cs
