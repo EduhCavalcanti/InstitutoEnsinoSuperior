@@ -1,54 +1,30 @@
-
 using InstituoEnsinoSuperior.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using InstituoEnsinoSuperior.Data;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace InstituoEnsinoSuperior.Controllers
 {
     public class InstituicaoController : Controller
     {
-        //Provisório, para simular banco de dados
-        private static IList<Instituicao> instituicoes = new List<Instituicao>() {
-            new Instituicao()
-            {
-                InstituicaoId = 1,
-                Nome = "FBV",
-                Endereco = "Boa viagem"
-            },
-            new Instituicao()
-            {
-                InstituicaoId = 2,
-                Nome = "UniSanta",
-                Endereco = "Santa Catarina"
-            },
-            new Instituicao()
-            {
-                InstituicaoId = 3,
-                Nome = "UniSãoPaulo",
-                Endereco = "São Paulo"
-            },
-            new Instituicao() 
-            {
+        private readonly IESContext _context;
 
-                InstituicaoId = 4,
-                Nome = "UniSulgrandense",
-                Endereco = "Rio Grande do Sul"
-            },
-            new Instituicao() 
-            {
-                InstituicaoId = 5,
-                Nome = "UniCarioca",
-                Endereco = "Rio de Janeiro"
-            }
-        };
+        public InstituicaoController(IESContext context)
+        {
+            this._context = context;
+        }
 
         // Definição de uma action chamada Index
         //Vai listar as instituições 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             //Vai retornar as instituições por ordem alfabetica
-            return View(instituicoes.OrderBy(i => i.Nome));
+            List<Instituicao> instituicoes = await _context.Instituições.OrderBy(x => x.Nome).ToListAsync();
+
+            return View(instituicoes);
         }
 
         //Para pagina de criação(interação) de uma nova instituição, interação com usuário
@@ -60,53 +36,70 @@ namespace InstituoEnsinoSuperior.Controllers
         //Método para ciração de uma nova instituição utilizando os dados recebido pela view
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Instituicao instituicao)//Vai receber da View os parâmetros (nome, endereço)
+        public async  Task<ActionResult> Create(Instituicao instituicao)//Vai receber da View os parâmetros (nome, endereço)
         {
-            //Vai adicionar a instituição 
-            instituicoes.Add(instituicao);
-            //Provisório, vai inserir manual o Id da instituição
-            instituicao.InstituicaoId = instituicoes.Select(i => i.InstituicaoId).Max() + 1;
-            //Vai redirecionar para página Index
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                //Vai adicionar a instituição 
+                _context.Instituições.Add(instituicao);
+                await _context.SaveChangesAsync();
+                //Vai redirecionar para página Index
+                return RedirectToAction(nameof(Index));
+            }
+            return View(instituicao);
         }
 
         //Método para interação da tela de edição da instituição com o usuário(vai mostrar a instituição pelo Id)
-        public ActionResult Edit(long id)
+        public async Task<ActionResult> Edit(long? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
             //Vai receber o id passado pela view para pegar a instituição e retornar na view
-            return View(instituicoes.Where(i => i.InstituicaoId == id).First());
+            return View(await _context.Instituições.SingleOrDefaultAsync(i => i.InstituicaoId == id));
         }
 
         //Método que vai fazer a alteração dos dados
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Instituicao instituicao)
+        public async Task<ActionResult> Edit(Instituicao instituicao, long? id)
         {
-            //Vai buscar a instituição pela Id que foi passado no parametro instituicao.InstituicaoId
-            instituicoes.Remove(instituicoes.Where(i => i.InstituicaoId == instituicao.InstituicaoId).First());
-            //Vai adicionar a instituição editada
-            instituicoes.Add(instituicao);
-            //Vai redirecionar a página 
-            return RedirectToAction(nameof(Index));
+            //Vai verificar se o id é igual ao que foi passado
+            if (id != instituicao.InstituicaoId)
+            {
+                return NotFound();
+            }
+           
+            if(ModelState.IsValid)
+            {
+                //Vai Atualizar a instituição editada
+                _context.Instituições.Update(instituicao);
+                await _context.SaveChangesAsync();
+                //Vai redirecionar a página 
+                return RedirectToAction(nameof(Index));
+            }
+            return View(instituicao);
         }
         
         //Método para mostrar o detalhe da instituição 
-        public ActionResult Details (long id)
+        public async Task<ActionResult> Details (long id)
         {
-            return View(instituicoes.Where(i => i.InstituicaoId == id).First());
+            return View(await _context.Instituições.SingleOrDefaultAsync(i => i.InstituicaoId == id));
         }
 
         //Método para tela de interação delete da instituição
-        public ActionResult Delete (long id)
+        public async Task<ActionResult> Delete (long id)
         {
-            return View(instituicoes.Where(i => i.InstituicaoId == id).First());
+            return View(await _context.Instituições.SingleOrDefaultAsync(i => i.InstituicaoId == id));
         }
 
         //Método para a deletar a instituição do sistema
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete (Instituicao instituto){
-            instituicoes.Remove(instituicoes.Where(i => i.InstituicaoId == instituto.InstituicaoId).First());
+        public async Task<IActionResult> Delete (Instituicao instituto){
+             _context.Instituições.Remove(instituto);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

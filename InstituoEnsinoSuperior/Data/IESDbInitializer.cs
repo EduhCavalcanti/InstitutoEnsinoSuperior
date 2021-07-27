@@ -14,11 +14,30 @@ namespace InstituoEnsinoSuperior.Data
         //Método reponsável por verificar se existe dados no banco de dados e popular o banco quaso não tenha nada
         public  void Initialize()
         {
+            //Se não tiver dados no BD, iremos povoar
+            if (_context.Instituições.Any())
+            {
+                return;
+            }
+            var instituicoes = new Instituicao[]
+            {
+                new Instituicao{Nome="FBV", Endereco="Boa viagem"},
+                new Instituicao{Nome="UniSanta", Endereco="Santa Catarina"},
+                new Instituicao{Nome="UniSãoPaulo", Endereco="São Paulo"},
+                new Instituicao{Nome="UniSulgrandense", Endereco="Rio Grande do Sul"},
+                new Instituicao{Nome="UniCarioca", Endereco="Rio de Janeiro"},
+            };
+            foreach(Instituicao i in instituicoes)
+            {
+                _context.Add(i);
+            }
+            _context.SaveChanges();
+
+            //Se não tiver dados no BD, iremos popular
             if (_context.Departamentos.Any())
             {
                 return;
             }
-            //Se não tiver dados no BD, iremos popular
             var departamentos = new Departamento[]
             {
             new Departamento{Nome="Ciência da Computação"},
