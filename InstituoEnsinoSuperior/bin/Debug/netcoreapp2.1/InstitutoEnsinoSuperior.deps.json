@@ -40,6 +40,7 @@
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.1.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10",
+          "Microsoft.Web.LibraryManager.Build": "2.1.113",
           "Pomelo.EntityFrameworkCore.MySql": "2.1.1"
         },
         "runtime": {
@@ -720,6 +721,11 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
+      "Microsoft.Web.LibraryManager.Build/2.1.113": {
+        "dependencies": {
+          "System.Runtime.Loader": "4.3.0"
+        }
+      },
       "MySqlConnector/0.42.1": {
         "runtime": {
           "lib/netcoreapp2.1/MySqlConnector.dll": {
@@ -999,6 +1005,13 @@
         },
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "System.Runtime.Loader/4.3.0": {
+        "dependencies": {
+          "System.IO": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
         }
       },
       "System.Security.Principal.Windows/4.5.1": {
@@ -4002,6 +4015,13 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.1.10",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.1.10.nupkg.sha512"
     },
+    "Microsoft.Web.LibraryManager.Build/2.1.113": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sPbpMMMqcdvVL8dyugOY5o4APB2bY1I9ueBlrDTfMRMRHP+olcDoqCGnaCSluxoCnzRpz9H7TbT7G/mdWwKplw==",
+      "path": "microsoft.web.librarymanager.build/2.1.113",
+      "hashPath": "microsoft.web.librarymanager.build.2.1.113.nupkg.sha512"
+    },
     "MySqlConnector/0.42.1": {
       "type": "package",
       "serviceable": true,
@@ -4141,6 +4161,13 @@
       "sha512": "sha512-wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
       "path": "system.runtime.compilerservices.unsafe/4.5.2",
       "hashPath": "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+    },
+    "System.Runtime.Loader/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DHMaRn8D8YCK2GG2pw+UzNxn/OHVfaWx7OTLBD/hPegHZZgcZh3H6seWegrC4BYwsfuGrywIuT+MQs+rPqRLTQ==",
+      "path": "system.runtime.loader/4.3.0",
+      "hashPath": "system.runtime.loader.4.3.0.nupkg.sha512"
     },
     "System.Security.Principal.Windows/4.5.1": {
       "type": "package",
