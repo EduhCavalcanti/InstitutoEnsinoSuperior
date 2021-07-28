@@ -15,7 +15,7 @@ namespace InstituoEnsinoSuperior.Data
         public  void Initialize()
         {
             //Se não tiver dados no BD, iremos povoar
-            if (_context.Instituições.Any())
+            if (_context.Instituicoes.Any())
             {
                 return;
             }

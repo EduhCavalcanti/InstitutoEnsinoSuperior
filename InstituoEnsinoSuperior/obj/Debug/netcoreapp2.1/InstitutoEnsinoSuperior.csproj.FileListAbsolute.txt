@@ -45,3 +45,4 @@ C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\De
 C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\bin\Debug\netcoreapp2.1\libman.json
 C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutIES.cshtml.g.cs
 C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\eduhc\source\repos\InstituoEnsinoSuperior\InstituoEnsinoSuperior\obj\Debug\netcoreapp2.1\Razor\Views\Instituicao\_ComDepartamentos.cshtml.g.cs

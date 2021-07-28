@@ -13,7 +13,7 @@ namespace InstituoEnsinoSuperior.Data
 
         //Mapeando as classes para o banco de dados
         public DbSet<Departamento> Departamentos { get; set; }
-        public DbSet<Instituicao> Instituições { get; set; }
+        public DbSet<Instituicao> Instituicoes { get; set; }
 
 
     }

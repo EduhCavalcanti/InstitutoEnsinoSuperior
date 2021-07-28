@@ -6,6 +6,7 @@ using InstituoEnsinoSuperior.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InstituoEnsinoSuperior.Controllers
 {
@@ -22,13 +23,23 @@ namespace InstituoEnsinoSuperior.Controllers
         //Método para listar os departamentos 
         public async  Task<IActionResult> Index()
         {
-            List<Departamento> departamentos = await _context.Departamentos.ToListAsync();
+            //Implentação tardia,(Sem associação)
+            //List<Departamento> departamentos = await _context.Departamentos.ToListAsync();
+
+            //Nova implementação, incluindo a instituição com retorno ordenado por nome
+            var departamentos = await _context.Departamentos.Include(i => i.Instituicao).OrderBy(x => x.Nome).ToListAsync();
             return View(departamentos);
         }
 
         //Método para View da criação do departamento 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            //Vai pegar o nome da instituição no banco de dados
+            var instituicoes = await _context.Instituicoes.OrderBy(x => x.Nome).ToListAsync();
+            //Depois, um objeto é inserido na coleção, logo no início,realocando os demais. Isso é feito para que uma mensagem orientativa seja exibida ao  usuário no DropDownList
+            instituicoes.Insert(0, new Instituicao() { InstituicaoId = 0, Nome = "selecione uma instituição" });
+            //Vai ser armazenado na ViewBag para ser usada no front
+            ViewBag.Instituicoes = instituicoes;
             return View();
         }
 
@@ -67,6 +78,8 @@ namespace InstituoEnsinoSuperior.Controllers
             {
                 return NotFound();
             }
+            //Vai armazenar na viewBang
+            ViewBag.Instituicoes = new SelectList(_context.Instituicoes.OrderBy(x => x.Nome), "InstituicaoId", "Nome", departamento.InstituicaoId);
             //Se tiver tudo certo vai retornar o departamento 
             return View(departamento);
         }
@@ -99,7 +112,8 @@ namespace InstituoEnsinoSuperior.Controllers
             {
                 return NotFound();
             }
-            var departamento = await _context.Departamentos.SingleOrDefaultAsync(x => x.DepartamentoId == id);
+            //var departamento = await _context.Departamentos.SingleOrDefaultAsync(x => x.DepartamentoId == id);
+            var departamento = await _context.Departamentos.Include(i => i.Instituicao).OrderBy(x => x.Nome).SingleOrDefaultAsync(x => x.DepartamentoId == id);
             if(departamento == null)
             {
                 return NotFound();
@@ -138,6 +152,7 @@ namespace InstituoEnsinoSuperior.Controllers
             }
             _context.Departamentos.Remove(departameto);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 

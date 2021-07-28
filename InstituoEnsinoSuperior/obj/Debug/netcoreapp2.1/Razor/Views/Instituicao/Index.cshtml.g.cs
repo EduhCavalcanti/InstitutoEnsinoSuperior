@@ -72,7 +72,7 @@ using InstituoEnsinoSuperior.Models;
             WriteLiteral("\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n");
             EndContext();
             BeginContext(232, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "966be1cffdb042c58b7b609163f40c33", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dcb52ff9a93647e8981c413a6d24d25e", async() => {
                 BeginContext(238, 89, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Index</title>\r\n\r\n");
                 EndContext();
@@ -92,7 +92,7 @@ using InstituoEnsinoSuperior.Models;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(338, 2101, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "61de54f72cc8445bb3203b6f68a63931", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f6d576c3b594b7db83723d35373e242", async() => {
                 BeginContext(344, 346, true);
                 WriteLiteral(@"
     <div class=""card-block"">
@@ -176,7 +176,7 @@ using InstituoEnsinoSuperior.Models;
                 WriteLiteral("\r\n                            </td>\r\n                            <td>\r\n\r\n                                ");
                 EndContext();
                 BeginContext(1775, 64, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f3c0bb8ed5e419fbdc9da456491ecd7", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "41614ecdbed64b0b80830a89bbe669d8", async() => {
                     BeginContext(1831, 4, true);
                     WriteLiteral("Edit");
                     EndContext();
@@ -211,7 +211,7 @@ using InstituoEnsinoSuperior.Models;
                 WriteLiteral(" |\r\n                                ");
                 EndContext();
                 BeginContext(1875, 70, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "35e91e21174c4f5491f247d0e083b622", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "79391bb0f3a14e3592fdd1602e5add82", async() => {
                     BeginContext(1934, 7, true);
                     WriteLiteral("Details");
                     EndContext();
@@ -246,7 +246,7 @@ using InstituoEnsinoSuperior.Models;
                 WriteLiteral(" |\r\n                                ");
                 EndContext();
                 BeginContext(1981, 68, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "25417c6acc5249bf834f3c70f7b409e6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8be210edf69a4b6db79ccba57a4a3111", async() => {
                     BeginContext(2039, 6, true);
                     WriteLiteral("Delete");
                     EndContext();
@@ -289,7 +289,7 @@ using InstituoEnsinoSuperior.Models;
                 WriteLiteral("                </tbody>\r\n\r\n            </table>\r\n        </div>\r\n        <div class=\"card-footer bg-success text-center\">\r\n            ");
                 EndContext();
                 BeginContext(2276, 122, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "920444638e3c4bfabb65e4b19c94bbc2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cffcfab03e364ad4b405f6256b9096f1", async() => {
                     BeginContext(2319, 75, true);
                     WriteLiteral("\r\n                Criar uma nova\r\n                instituição\r\n            ");
                     EndContext();

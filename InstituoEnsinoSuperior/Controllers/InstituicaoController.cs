@@ -5,6 +5,7 @@ using System.Linq;
 using InstituoEnsinoSuperior.Data;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InstituoEnsinoSuperior.Controllers
 {
@@ -22,7 +23,7 @@ namespace InstituoEnsinoSuperior.Controllers
         public async Task<IActionResult> Index()
         {
             //Vai retornar as instituições por ordem alfabetica
-            List<Instituicao> instituicoes = await _context.Instituições.OrderBy(x => x.Nome).ToListAsync();
+            List<Instituicao> instituicoes = await _context.Instituicoes.OrderBy(x => x.Nome).ToListAsync();
 
             return View(instituicoes);
         }
@@ -41,7 +42,7 @@ namespace InstituoEnsinoSuperior.Controllers
             if (ModelState.IsValid)
             {
                 //Vai adicionar a instituição 
-                _context.Instituições.Add(instituicao);
+                _context.Instituicoes.Add(instituicao);
                 await _context.SaveChangesAsync();
                 //Vai redirecionar para página Index
                 return RedirectToAction(nameof(Index));
@@ -57,7 +58,7 @@ namespace InstituoEnsinoSuperior.Controllers
                 return NotFound();
             }
             //Vai receber o id passado pela view para pegar a instituição e retornar na view
-            return View(await _context.Instituições.SingleOrDefaultAsync(i => i.InstituicaoId == id));
+            return View(await _context.Instituicoes.SingleOrDefaultAsync(i => i.InstituicaoId == id));
         }
 
         //Método que vai fazer a alteração dos dados
@@ -74,7 +75,7 @@ namespace InstituoEnsinoSuperior.Controllers
             if(ModelState.IsValid)
             {
                 //Vai Atualizar a instituição editada
-                _context.Instituições.Update(instituicao);
+                _context.Instituicoes.Update(instituicao);
                 await _context.SaveChangesAsync();
                 //Vai redirecionar a página 
                 return RedirectToAction(nameof(Index));
@@ -85,20 +86,21 @@ namespace InstituoEnsinoSuperior.Controllers
         //Método para mostrar o detalhe da instituição 
         public async Task<ActionResult> Details (long id)
         {
-            return View(await _context.Instituições.SingleOrDefaultAsync(i => i.InstituicaoId == id));
+            var instituicoes = await _context.Instituicoes.Include(i => i.Departamentos).SingleOrDefaultAsync(x => x.InstituicaoId == id);
+            return View(instituicoes);
         }
 
         //Método para tela de interação delete da instituição
         public async Task<ActionResult> Delete (long id)
         {
-            return View(await _context.Instituições.SingleOrDefaultAsync(i => i.InstituicaoId == id));
+            return View(await _context.Instituicoes.SingleOrDefaultAsync(i => i.InstituicaoId == id));
         }
 
         //Método para a deletar a instituição do sistema
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete (Instituicao instituto){
-             _context.Instituições.Remove(instituto);
+             _context.Instituicoes.Remove(instituto);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
