@@ -7,6 +7,10 @@ namespace InstituoEnsinoSuperior.Models{
         [Required (ErrorMessage ="Necessário nome de algum departamento")]
         public string Nome { get; set; }
 
+        //Fazendo associação com a classe Instituição // Um para um 
+        public long? InstituicaoId { get; set; } //Chave estrangeira
+        public Instituicao Instituicao { get; set; }
+
         //Constructor 
         public Departamento()
         {

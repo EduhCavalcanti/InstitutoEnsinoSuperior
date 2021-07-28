@@ -40,8 +40,8 @@ namespace InstituoEnsinoSuperior.Data
             }
             var departamentos = new Departamento[]
             {
-            new Departamento{Nome="Ciência da Computação"},
-            new Departamento{Nome="Ciência de Alimento"}
+            new Departamento{Nome="Ciência da Computação", InstituicaoId=1},
+            new Departamento{Nome="Ciência de Alimento", InstituicaoId=2}
             };
             foreach (Departamento d in departamentos)
             {
